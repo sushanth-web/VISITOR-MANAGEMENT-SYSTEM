@@ -1,31 +1,31 @@
 #SET UP VISITOR MANAGEMENT SYSTEM WEB APP<br><br>
-0.open git bash and type this<br>
-git init<br>
+0.open git bash and type this<br><br>
+1.git init<br><br>
 2.git clone https://github.com/sushanth-web/VISITOR-MANAGEMENT-SYSTEM.git<br><br>
 ---
 ##BACKEND SETUP<br><br>
-3.got to the visitor management system folder<br>
-4.cd backend<br>
-5.npm install<br>
-6.set up these variables in .env file<br>
-PORT=<br>
-MONGODB_URI=<br>
-JWT_SECRET_KEY=<br>
-EMAIL=<br>
-EMAIL_PASS=<br>
-7.run the seed file to register as an admin<br>
-npm run seed:admin<br>
-8.run the backend<br>
+3.got to the visitor management system folder<br><br>
+4.cd backend<br><br>
+5.npm install<br><br>
+6.set up these variables in .env file<br><br>
+PORT=<br><br>
+MONGODB_URI=<br><br>
+JWT_SECRET_KEY=<br><br>
+EMAIL=<br><br>
+EMAIL_PASS=<br><br>
+7.run the seed file to register as an admin<br><br>
+npm run seed:admin<br><br>
+8.run the backend<br><br>
 npm start<br><br>
 ---
 ##FRONTEND SETUP<br><br>
-9.open new terminal<br>
-10.cd frontend<br>
-11.npm install<br>
-12.npm run dev<br>
+9.open new terminal<br><br>
+10.cd frontend<br><br>
+11.npm install<br><br>
+12.npm run dev<br><br>
 13.follow the link to get to your web app<br><br>
 ---
-video file link :-<br>
+video file link :-<br><br>
 https://docs.google.com/videos/d/11fwLbT5LtKn0B1jxhajUwlQxXM6RYypglkNU-gjFmV0/edit?usp=sharing<br>
 ---
 -screen shots :-<br>
