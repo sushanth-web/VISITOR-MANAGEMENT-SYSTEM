@@ -33,6 +33,7 @@ https://docs.google.com/videos/d/11fwLbT5LtKn0B1jxhajUwlQxXM6RYypglkNU-gjFmV0/ed
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124730" src="https://github.com/user-attachments/assets/340813fc-6bc0-429c-9831-b8a9307f03ba" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124713" src="https://github.com/user-attachments/assets/6c14fd27-49ca-4257-a334-bc6e417835a4" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124658" src="https://github.com/user-attachments/assets/91a49bad-7974-4193-bb97-23251f731fb9" />
+<img width="1366" height="768" alt="Screenshot 2026-01-15 184019" src="https://github.com/user-attachments/assets/d2f70928-77c5-454a-a745-0f6939160010" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124642" src="https://github.com/user-attachments/assets/9dc31d9a-023d-4fee-8fc7-fa42610dfca5" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124617" src="https://github.com/user-attachments/assets/b3430f8e-f425-4e7c-ac16-592bedbf2a4c" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124546" src="https://github.com/user-attachments/assets/38a08cd6-22dd-4e0c-b6dc-1a8e33844f59" />
