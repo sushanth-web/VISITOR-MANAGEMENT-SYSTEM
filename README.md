@@ -1,5 +1,5 @@
 #SET UP VISITOR MANAGEMENT SYSTEM WEB APP<br><br>
-0.open git bash and type this
+0.open git bash and type this<br>
 git init<br>
 2.git clone https://github.com/sushanth-web/VISITOR-MANAGEMENT-SYSTEM.git<br><br>
 ---
