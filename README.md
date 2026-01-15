@@ -1,8 +1,9 @@
-#SET UP VISITOR MANAGEMENT SYSTEM WEB APP<br>
+#SET UP VISITOR MANAGEMENT SYSTEM WEB APP<br><br>
+0.open git bash and type this
 1.git init<br>
-2.git clone https://github.com/sushanth-web/VISITOR-MANAGEMENT-SYSTEM.git<br>
+2.git clone https://github.com/sushanth-web/VISITOR-MANAGEMENT-SYSTEM.git<br><br>
 ---
-##BACKEND SETUP<br>
+##BACKEND SETUP<br><br>
 3.got to the visitor management system folder<br>
 4.cd backend<br>
 5.npm install<br>
@@ -15,14 +16,14 @@ EMAIL_PASS=<br>
 7.run the seed file to register as an admin<br>
 npm run seed:admin<br>
 8.run the backend<br>
-npm start<br>
+npm start<br><br>
 ---
-##FRONTEND SETUP<br>
+##FRONTEND SETUP<br><br>
 9.open new terminal<br>
 10.cd frontend<br>
 11.npm install<br>
 12.npm run dev<br>
-13.follow the link to get to your web app<br>
+13.follow the link to get to your web app<br><br>
 ---
 video file link :-<br>
 https://docs.google.com/videos/d/11fwLbT5LtKn0B1jxhajUwlQxXM6RYypglkNU-gjFmV0/edit?usp=sharing<br>
