@@ -1,33 +1,33 @@
--SET UP VISITOR MANAGEMENT SYSTEM WEB APP
--1.git init
--2.git clone https://github.com/sushanth-web/VISITOR-MANAGEMENT-SYSTEM.git
--
--BACKEND SETUP
--3.got to the visitor management system folder
--4.cd backend
--5.npm install
--6.set up these variables in .env file
--PORT=
--MONGODB_URI=
--JWT_SECRET_KEY=
--EMAIL=
--EMAIL_PASS=
--7.run the seed file to register as an admin
--npm run seed:admin
--8.run the backend
--npm start
--
--FRONTEND SETUP
--9.open new terminal
--10.cd frontend
--11.npm install
--12.npm run dev
--13.follow the link to get to your web app
--
--video file link :-
--https://docs.google.com/videos/d/11fwLbT5LtKn0B1jxhajUwlQxXM6RYypglkNU-gjFmV0/edit?usp=sharing
--
--screen shots :-
+-SET UP VISITOR MANAGEMENT SYSTEM WEB APP<br>
+-1.git init<br>
+-2.git clone https://github.com/sushanth-web/VISITOR-MANAGEMENT-SYSTEM.git<br>
+-<br>
+-BACKEND SETUP<br>
+-3.got to the visitor management system folder<br>
+-4.cd backend<br>
+-5.npm install<br>
+-6.set up these variables in .env file<br>
+-PORT=<br>
+-MONGODB_URI=<br>
+-JWT_SECRET_KEY=<br>
+-EMAIL=<br>
+-EMAIL_PASS=<br>
+-7.run the seed file to register as an admin<br>
+-npm run seed:admin<br>
+-8.run the backend<br>
+-npm start<br>
+-<br>
+-FRONTEND SETUP<br>
+-9.open new terminal<br>
+-10.cd frontend<br>
+-11.npm install<br>
+-12.npm run dev<br>
+-13.follow the link to get to your web app<br>
+-<br>
+-video file link :-<br>
+-https://docs.google.com/videos/d/11fwLbT5LtKn0B1jxhajUwlQxXM6RYypglkNU-gjFmV0/edit?usp=sharing<br>
+-<br>
+-screen shots :-<br>
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124747" src="https://github.com/user-attachments/assets/e8c38356-2403-4420-aa01-d544db6efd72" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124730" src="https://github.com/user-attachments/assets/340813fc-6bc0-429c-9831-b8a9307f03ba" />
 <img width="1366" height="768" alt="Screenshot 2026-01-15 124713" src="https://github.com/user-attachments/assets/6c14fd27-49ca-4257-a334-bc6e417835a4" />
