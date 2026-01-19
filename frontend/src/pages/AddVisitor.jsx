@@ -14,19 +14,25 @@ export default function AddVisitor() {
 
   const [profileImage, setProfileImage] = useState(null)
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
-  const handleFileChange = (e) => {
-    setProfileImage(e.target.files[0])
+  const handleFileChange = (event) => {
+    const file = event.target.files?.[0] || null
+    setProfileImage(file)
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
     try {
       const formData = new FormData()
+
       Object.keys(form).forEach((key) => {
         formData.append(key, form[key])
       })
@@ -44,14 +50,14 @@ export default function AddVisitor() {
 
       alert("Visitor added successfully")
       window.location.href = "/visitors"
-    } catch (err) {
-      console.error(err)
+    } catch (error) {
+      console.error("Failed to add visitor:", error)
       alert("Failed to add visitor")
     }
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow w-full max-w-lg"
@@ -60,17 +66,71 @@ export default function AddVisitor() {
           Add New Visitor
         </h2>
 
-        <input type="file" name="profile_image" accept="image/*" onChange={handleFileChange} required  className="mb-4"/>
+        <input
+          type="file"
+          name="profile_image"
+          accept="image/*"
+          onChange={handleFileChange}
+          required
+          className="mb-4"
+        />
 
-        <input name="name" placeholder="Name" onChange={handleChange} required className="input" />
-        <input name="gender" placeholder="Gender" onChange={handleChange} required className="input mt-3" />
-        <input name="age" type="number" placeholder="Age" onChange={handleChange} required className="input mt-3" />
-        <input name="designation" placeholder="Designation" onChange={handleChange} required className="input mt-3" />
-        <input name="mobile_no" placeholder="Mobile Number" onChange={handleChange} required className="input mt-3" />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} required className="input mt-3" />
-        <input name="address" placeholder="Address" onChange={handleChange} required className="input mt-3" />
+        <input
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+          required
+          className="input"
+        />
+        <input
+          name="gender"
+          placeholder="Gender"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="age"
+          type="number"
+          placeholder="Age"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="designation"
+          placeholder="Designation"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="mobile_no"
+          placeholder="Mobile Number"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="address"
+          placeholder="Address"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
 
-        <button  type="submit" className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"  >
+        <button
+          type="submit"
+          className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"
+        >
           Save Visitor
         </button>
       </form>
