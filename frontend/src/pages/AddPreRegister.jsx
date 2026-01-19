@@ -9,44 +9,41 @@ export default function AddPreRegistration() {
     designation: "",
     mobile_no: "",
     employee_name: "",
-    employee_email:"",
+    employee_email: "",
     email: "",
     address: "",
   })
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
- const handleSubmit = async (e) => {
-  e.preventDefault()
-
-  try {
-    await api.post(
-      "/register/preregister",
-      form,
-      {
+    try {
+      await api.post("/register/preregister", form, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      }
-    )
+      })
 
-    alert("PreRegistration Successful and an Email is sent to the Employee")
-    window.location.href = "/preregister"
-  } catch (err) {
-  console.log("STATUS:", err.response?.status)
-  console.log("DATA:", err.response?.data)
-  console.log("FULL ERROR:", err)
-  alert(err.response?.data || "Failed to PreRegister")
-}
-
-}
-
+      alert("PreRegistration Successful and an Email is sent to the Employee")
+      window.location.href = "/preregister"
+    } catch (error) {
+      console.log("STATUS:", error.response?.status)
+      console.log("DATA:", error.response?.data)
+      console.log("FULL ERROR:", error)
+      alert(error.response?.data || "Failed to PreRegister")
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow w-full max-w-lg"
@@ -55,15 +52,72 @@ export default function AddPreRegistration() {
           Pre Registration Form
         </h2>
 
-        <input name="name" placeholder="Name" onChange={handleChange} required className="input" />
-        <input name="gender" placeholder="Gender" onChange={handleChange} required className="input mt-3" />
-        <input name="age" type="number" placeholder="Age" onChange={handleChange} required className="input mt-3" />
-        <input name="designation" placeholder="Designation" onChange={handleChange} required className="input mt-3" />
-        <input name="mobile_no" placeholder="Mobile Number" onChange={handleChange} required className="input mt-3" />
-        <input name="employee_name" placeholder="Employee Name" onChange={handleChange} required className="input mt-3" />
-        <input name="employee_email" type="email" placeholder="Employee Email" onChange={handleChange} required className="input mt-3" />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} required className="input mt-3" />
-        <input name="address" placeholder="Address" onChange={handleChange} required className="input mt-3" />
+        <input
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+          required
+          className="input"
+        />
+        <input
+          name="gender"
+          placeholder="Gender"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="age"
+          type="number"
+          placeholder="Age"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="designation"
+          placeholder="Designation"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="mobile_no"
+          placeholder="Mobile Number"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="employee_name"
+          placeholder="Employee Name"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="employee_email"
+          type="email"
+          placeholder="Employee Email"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Visitor Email"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="address"
+          placeholder="Address"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
 
         <button
           type="submit"
