@@ -13,34 +13,34 @@ export default function AddEmployee() {
     address: "",
   })
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
     try {
-      await api.post(
-        "/register/employee",
-        form,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      await api.post("/register/employee", form, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
 
       alert("Employee added successfully")
       window.location.href = "/employees"
-    } catch (err) {
-      console.error(err)
+    } catch (error) {
+      console.error("Failed to add employee:", error)
       alert("Failed to add employee")
     }
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow w-full max-w-lg"
@@ -49,14 +49,64 @@ export default function AddEmployee() {
           Add New Employee
         </h2>
 
-        <input name="name" placeholder="Name" onChange={handleChange} required className="input" />
-        <input name="gender" placeholder="Gender" onChange={handleChange} required className="input mt-3" />
-        <input name="age" type="number" placeholder="Age" onChange={handleChange} required className="input mt-3" />
-        <input name="designation" placeholder="Designation" onChange={handleChange} required className="input mt-3" />
-        <input name="department" placeholder="Department" onChange={handleChange} required className="input mt-3" />
-        <input name="mobile_no" placeholder="Mobile Number" onChange={handleChange} required className="input mt-3" />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} required className="input mt-3" />
-        <input name="address" placeholder="Address" onChange={handleChange} required className="input mt-3" />
+        <input
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+          required
+          className="input"
+        />
+        <input
+          name="gender"
+          placeholder="Gender"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="age"
+          type="number"
+          placeholder="Age"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="designation"
+          placeholder="Designation"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="department"
+          placeholder="Department"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="mobile_no"
+          placeholder="Mobile Number"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
+        <input
+          name="address"
+          placeholder="Address"
+          onChange={handleChange}
+          required
+          className="input mt-3"
+        />
 
         <button
           type="submit"
