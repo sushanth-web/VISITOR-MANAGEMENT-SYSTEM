@@ -12,14 +12,12 @@ export default function AddVisitor() {
     address: "",
   })
 
-  //  profile image state
   const [profileImage, setProfileImage] = useState(null)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  //file change handler
   const handleFileChange = (e) => {
     setProfileImage(e.target.files[0])
   }
@@ -28,7 +26,6 @@ export default function AddVisitor() {
     e.preventDefault()
 
     try {
-      // FormData logic (required for image upload)
       const formData = new FormData()
       Object.keys(form).forEach((key) => {
         formData.append(key, form[key])
@@ -63,15 +60,7 @@ export default function AddVisitor() {
           Add New Visitor
         </h2>
 
-        {/*file input with handler */}
-        <input
-          type="file"
-          name="profile_image"
-          accept="image/*"
-          onChange={handleFileChange}
-          required
-          className="mb-4"
-        />
+        <input type="file" name="profile_image" accept="image/*" onChange={handleFileChange} required  className="mb-4"/>
 
         <input name="name" placeholder="Name" onChange={handleChange} required className="input" />
         <input name="gender" placeholder="Gender" onChange={handleChange} required className="input mt-3" />
@@ -81,10 +70,7 @@ export default function AddVisitor() {
         <input name="email" type="email" placeholder="Email" onChange={handleChange} required className="input mt-3" />
         <input name="address" placeholder="Address" onChange={handleChange} required className="input mt-3" />
 
-        <button
-          type="submit"
-          className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"
-        >
+        <button  type="submit" className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"  >
           Save Visitor
         </button>
       </form>
