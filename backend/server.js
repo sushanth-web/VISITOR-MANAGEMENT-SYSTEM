@@ -1,59 +1,86 @@
-const express =require('express')
-const mongoose =require('mongoose')
-const app =express()
-const cors =require('cors')
-const bodyParser = require('body-parser')
-require('dotenv').config()
-const path = require("path");
-const admin_route=require("./routes/AdminRoute.js");
-const visitor_route=require("./routes/VisitorRoute.js");
-const employee_route=require("./routes/EmployeeRoute.js");
-const frontdesk_route=require("./routes/FrontdeskRoute.js");
-const preregister_route=require("./routes/PreregisterRoute.js");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const path = require('path');
+require('dotenv').config();
 
-app.use(cors())
+const admin_route = require('./routes/AdminRoute.js');
+const visitor_route = require('./routes/VisitorRoute.js');
+const employee_route = require('./routes/EmployeeRoute.js');
+const frontdesk_route = require('./routes/FrontdeskRoute.js');
+const preregister_route = require('./routes/PreregisterRoute.js');
+
+const app = express();
+
+// CORS – in production, replace * with your frontend URL
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://visitor-management-system-dobx.vercel.app',
+  ],
+  credentials: true,
+}));
+
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use("/api/admin", admin_route);
+// Static uploads
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
-app.use("/uploads",express.static(path.join(process.cwd(),"uploads")));
+// Admin routes
+app.use('/api/admin', admin_route);
 
-app.use("/api/register/visitor", visitor_route);
-app.use("/api/get/visitors/details", visitor_route);
-app.use("/api/update/visitors/details",visitor_route)
-app.use("/api/delete/visitors/details",visitor_route)
+// Visitor routes
+app.use('/api/register/visitor', visitor_route);
+app.use('/api/get/visitors/details', visitor_route);
+app.use('/api/update/visitors/details', visitor_route);
+app.use('/api/delete/visitors/details', visitor_route);
 
-app.use("/api/register/preregister", preregister_route)
-app.use("/api/get/preregister/details",preregister_route)
-app.use("/api/update/preregister/details",preregister_route)
-app.use("/api/delete/preregister/details",preregister_route)
+// Preregister routes
+app.use('/api/register/preregister', preregister_route);
+app.use('/api/get/preregister/details', preregister_route);
+app.use('/api/update/preregister/details', preregister_route);
+app.use('/api/delete/preregister/details', preregister_route);
 
-app.use("/api/register/employee", employee_route)
-app.use("/api/get/employees/details",employee_route);
-app.use("/api/update/employees/details", employee_route);
-app.use("/api/delete/employees/details", employee_route);
+// Employee routes
+app.use('/api/register/employee', employee_route);
+app.use('/api/get/employees/details', employee_route);
+app.use('/api/update/employees/details', employee_route);
+app.use('/api/delete/employees/details', employee_route);
 
-app.use("/api/check/in/out", frontdesk_route);
-app.use("/api/get/all/check/in/out/details", frontdesk_route);
-app.use("/api/get/check/in/out/details", frontdesk_route)
-app.use("/api/get/check/in/out",frontdesk_route)
-app.use("/api/update/check/in/out/details",frontdesk_route);
-app.use("/api/delete/check/in/out/details",frontdesk_route);
+// Frontdesk routes
+app.use('/api/check/in/out', frontdesk_route);
+app.use('/api/get/all/check/in/out/details', frontdesk_route);
+app.use('/api/get/check/in/out/details', frontdesk_route);
+app.use('/api/get/check/in/out', frontdesk_route);
+app.use('/api/update/check/in/out/details', frontdesk_route);
+app.use('/api/delete/check/in/out/details', frontdesk_route);
 
-async function startServer(){
+// Catch-all 404 for /api – helps distinguish wrong path vs wrong domain
+app.use('/api', (req, res) => {
+  res.status(404).json({
+    message: 'API route not found',
+    path: req.originalUrl,
+  });
+});
+
+// Start server after Mongo connects
+async function startServer() {
   try {
-    // connect MongoDb swrver
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('.........MongoDB Connected Successfully.........');
-    // start server when Db connects
-    app.listen(process.env.PORT, () => {
-      console.log(`Server is running on port ${process.env.PORT}`);
+
+    const port = process.env.PORT || 5000;
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
     });
-} catch(error){
-  console.error('MongoDB connection failed ❌',error);
+  } catch (error) {
+    console.error('MongoDB connection failed ❌', error);
+    process.exit(1);
   }
 }
-startServer();
 
+startServer();

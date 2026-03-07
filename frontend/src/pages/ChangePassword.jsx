@@ -1,7 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import api from "../services/api"
 
 export default function ChangePassword() {
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState("")
   const [otp, setOtp] = useState("")
   const [newPassword, setNewPassword] = useState("")
@@ -15,7 +18,7 @@ export default function ChangePassword() {
       })
 
       alert("Password updated successfully")
-      window.location.href = "/"
+      navigate("/")
     } catch (error) {
       alert("Invalid OTP or error")
     }
@@ -31,20 +34,20 @@ export default function ChangePassword() {
         <input
           className="w-full px-4 py-3 rounded bg-gray-100 border mb-3"
           placeholder="Email"
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           className="w-full px-4 py-3 rounded bg-gray-100 border mb-3"
           placeholder="OTP"
-          onChange={(event) => setOtp(event.target.value)}
+          onChange={(e) => setOtp(e.target.value)}
         />
 
         <input
           type="password"
           className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
           placeholder="New Password"
-          onChange={(event) => setNewPassword(event.target.value)}
+          onChange={(e) => setNewPassword(e.target.value)}
         />
 
         <button
@@ -57,4 +60,3 @@ export default function ChangePassword() {
     </div>
   )
 }
-

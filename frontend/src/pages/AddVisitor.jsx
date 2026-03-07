@@ -1,7 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import api from "../services/api"
 
 export default function AddVisitor() {
+  const navigate = useNavigate()
+
   const [form, setForm] = useState({
     name: "",
     gender: "",
@@ -49,7 +52,7 @@ export default function AddVisitor() {
       })
 
       alert("Visitor added successfully")
-      window.location.href = "/visitors"
+      navigate("/visitors")
     } catch (error) {
       console.error("Failed to add visitor:", error)
       alert("Failed to add visitor")
@@ -58,79 +61,22 @@ export default function AddVisitor() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow w-full max-w-lg"
-      >
+      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow w-full max-w-lg">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Add New Visitor
         </h2>
 
-        <input
-          type="file"
-          name="profile_image"
-          accept="image/*"
-          onChange={handleFileChange}
-          required
-          className="mb-4"
-        />
+        <input type="file" name="profile_image" accept="image/*" onChange={handleFileChange} required className="mb-4"/>
 
-        <input
-          name="name"
-          placeholder="Name"
-          onChange={handleChange}
-          required
-          className="input"
-        />
-        <input
-          name="gender"
-          placeholder="Gender"
-          onChange={handleChange}
-          required
-          className="input mt-3"
-        />
-        <input
-          name="age"
-          type="number"
-          placeholder="Age"
-          onChange={handleChange}
-          required
-          className="input mt-3"
-        />
-        <input
-          name="designation"
-          placeholder="Designation"
-          onChange={handleChange}
-          required
-          className="input mt-3"
-        />
-        <input
-          name="mobile_no"
-          placeholder="Mobile Number"
-          onChange={handleChange}
-          required
-          className="input mt-3"
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-          className="input mt-3"
-        />
-        <input
-          name="address"
-          placeholder="Address"
-          onChange={handleChange}
-          required
-          className="input mt-3"
-        />
+        <input name="name" placeholder="Name" onChange={handleChange} required className="input"/>
+        <input name="gender" placeholder="Gender" onChange={handleChange} required className="input mt-3"/>
+        <input name="age" type="number" placeholder="Age" onChange={handleChange} required className="input mt-3"/>
+        <input name="designation" placeholder="Designation" onChange={handleChange} required className="input mt-3"/>
+        <input name="mobile_no" placeholder="Mobile Number" onChange={handleChange} required className="input mt-3"/>
+        <input name="email" type="email" placeholder="Email" onChange={handleChange} required className="input mt-3"/>
+        <input name="address" placeholder="Address" onChange={handleChange} required className="input mt-3"/>
 
-        <button
-          type="submit"
-          className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"
-        >
+        <button type="submit" className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold">
           Save Visitor
         </button>
       </form>
