@@ -41,13 +41,13 @@ export default function Login() {
         </button>
 
         <div className="text-center mt-4 text-sm">
-          <a href="/forgot-password" className="text-indigo-600">
+          <a href="/api/admin/forgot/password" className="text-indigo-600">
             Forgot Password?
           </a>
         </div>
 
         <div className="text-center mt-2 text-sm">
-          <a href="/signup" className="text-indigo-600">
+          <a href="/api/admin/signup" className="text-indigo-600">
             Create Account
           </a>
         </div>
