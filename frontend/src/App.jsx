@@ -1,20 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter,Routes, Route} from 'react-router-dom'
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
-import ChangePassword from "./pages/ChangePassword";
+import Signup from "./pages/Signup"
+import ForgotPassword from "./pages/ForgotPassword"
+import ChangePassword from "./pages/ChangePassword"
 import Dashboard from './pages/Dashboard'
 import Visitors from './pages/Visitors'
 import Employees from './pages/Employees'
 import CheckInOut from './pages/CheckInOut'
-import AddVisitor from "./pages/AddVisitor";
-import AddEmployee from "./pages/AddEmployee";
+import AddVisitor from "./pages/AddVisitor"
+import AddEmployee from "./pages/AddEmployee"
 import EditVisitor from "./pages/EditVisitor";
 import EditEmployee  from './pages/EditEmployee';
 import PrintVisitor from './pages/VisitorPass';
-import PreRegister from './pages/PreRegister';
-import AddPreRegistration from './pages/AddPreRegister';
-import EditPreregister from './pages/EditPreregister';
+import PreRegister from './pages/PreRegister'
+import AddPreRegistration from './pages/AddPreRegister'
+import EditPreregister from './pages/EditPreregister'
 
 export default function App() {
   return (

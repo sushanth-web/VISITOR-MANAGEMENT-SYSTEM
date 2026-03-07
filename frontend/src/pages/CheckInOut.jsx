@@ -6,7 +6,7 @@ export default function CheckInOut() {
   const [preregister, setPreregister] = useState([]);
   const [showLogout, setShowLogout] = useState(false);
 
-  // Helpers to fetch data
+  // Helpers to fetch data 
   const fetchVisitors = useCallback(async () => {
     try {
       const res = await api.get("/get/visitors/details", {

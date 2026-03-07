@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); 
 const Schema = mongoose.Schema;
 
 const VisitorDetailsSchema= new Schema(
@@ -13,7 +13,7 @@ const VisitorDetailsSchema= new Schema(
             type:String,
             required:true
           },
-          profile_image: {
+          profile_image:  {
             type: String,
           },
 
