@@ -1,12 +1,15 @@
-import { useState } from "react"
-import api from "../services/api"
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import api from "../services/api";
 
 export default function Signup() {
-  const [name, setName] = useState("")
-  const [userName, setUserName] = useState("")
-  const [mobileNo, setMobileNo] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignup = async () => {
     try {
@@ -16,45 +19,41 @@ export default function Signup() {
         mobile_no: mobileNo,
         email,
         password,
-      })
-      alert("Account created successfully")
-      window.location.href = "/"
+      });
+
+      alert("Account created successfully");
+      navigate("/");
     } catch (err) {
-      alert("Signup failed: " + (err.response?.data?.message || err.message))
+      alert("Signup failed: " + (err.response?.data?.message || err.message));
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow w-96">
         <h1 className="text-2xl font-bold text-center mb-6">Sign Up</h1>
 
-        <input
-          className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
+        <input className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
           placeholder="Full Name"
           onChange={(e) => setName(e.target.value)}
         />
 
-        <input
-          className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
+        <input className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
           placeholder="Username"
           onChange={(e) => setUserName(e.target.value)}
         />
 
-        <input
-          className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
+        <input className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
           placeholder="Mobile Number"
           onChange={(e) => setMobileNo(e.target.value)}
         />
 
-        <input
-          className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
+        <input className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <input
-          type="password"
+        <input type="password"
           className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
@@ -68,11 +67,11 @@ export default function Signup() {
         </button>
 
         <div className="text-center mt-4 text-sm">
-          <a href="/" className="text-indigo-600">
+          <Link to="/" className="text-indigo-600">
             Back to Login
-          </a>
+          </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }

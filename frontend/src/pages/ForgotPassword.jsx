@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function ForgotPassword() {
-  const [step, setStep] = useState(1); // Step 1: send OTP, Step 2: reset password
+  const navigate = useNavigate();
+
+  const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -11,7 +14,7 @@ export default function ForgotPassword() {
     try {
       await api.post("/admin/forgot/password", { email: email.trim() });
       alert("OTP sent to your email");
-      setStep(2); // move to OTP/password reset step
+      setStep(2);
     } catch (err) {
       alert(err.response?.data || "Failed to send OTP");
     }
@@ -24,8 +27,9 @@ export default function ForgotPassword() {
         otp: otp.trim(),
         password: newPassword,
       });
+
       alert("Password updated successfully");
-      window.location.href = "/";
+      navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Failed to reset password");
     }
@@ -34,17 +38,17 @@ export default function ForgotPassword() {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow w-96">
+
         {step === 1 && (
           <>
-            <h1 className="text-2xl font-bold text-center mb-6">
-              Forgot Password
-            </h1>
+            <h1 className="text-2xl font-bold text-center mb-6">Forgot Password</h1>
             <input
               className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+
             <button
               onClick={sendOTP}
               className="w-full bg-indigo-500 text-white py-3 rounded hover:bg-indigo-700"
@@ -56,15 +60,15 @@ export default function ForgotPassword() {
 
         {step === 2 && (
           <>
-            <h1 className="text-2xl font-bold text-center mb-6">
-              Reset Password
-            </h1>
+            <h1 className="text-2xl font-bold text-center mb-6">Reset Password</h1>
+
             <input
               className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
               placeholder="Enter OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
             />
+
             <input
               type="password"
               className="w-full px-4 py-3 rounded bg-gray-100 border mb-4"
@@ -72,6 +76,7 @@ export default function ForgotPassword() {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
+
             <button
               onClick={resetPassword}
               className="w-full bg-indigo-500 text-white py-3 rounded hover:bg-indigo-700"
@@ -82,9 +87,9 @@ export default function ForgotPassword() {
         )}
 
         <div className="text-center mt-4 text-sm">
-          <a href="/" className="text-indigo-600">
+          <Link to="/" className="text-indigo-600">
             Back to Login
-          </a>
+          </Link>
         </div>
       </div>
     </div>

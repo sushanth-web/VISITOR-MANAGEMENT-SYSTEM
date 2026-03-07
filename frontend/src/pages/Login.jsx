@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const res = await api.post("/admin/login", { email, password });
       localStorage.setItem("token", res.data.token);
-      window.location.href = "/dashboard";
+      navigate("/dashboard");
     } catch (err) {
       alert("Invalid credentials");
     }
@@ -41,15 +43,15 @@ export default function Login() {
         </button>
 
         <div className="text-center mt-4 text-sm">
-          <a href="/api/admin/forgot/password" className="text-indigo-600">
+          <Link to="/forgot-password" className="text-indigo-600">
             Forgot Password?
-          </a>
+          </Link>
         </div>
 
         <div className="text-center mt-2 text-sm">
-          <a href="/api/admin/signup" className="text-indigo-600">
+          <Link to="/signup" className="text-indigo-600">
             Create Account
-          </a>
+          </Link>
         </div>
       </div>
     </div>
